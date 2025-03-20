@@ -8,7 +8,7 @@ import ValidationError from "../utils/errors/validationError.js";
 
 export const signUpService = async (data) => {
     try {
-        const newUser = await userRepository.signup(data);
+        const newUser = await userRepository.create(data);
         return newUser;  
     } catch (error) {
        console.log("User service error",error);    
@@ -23,8 +23,7 @@ export const signUpService = async (data) => {
     if(error.name ==='MongoServerError' && error.code ===11000){
         throw new ValidationError({
             error:["A user with same email or username already exists "]
-        },
-    
+        },  'A user with same email or username already exists'
     );
     }
     }
@@ -35,7 +34,7 @@ export const signInService = async(data) => {
       const user = await userRepository.getByEmail(data.email);
      if(!user){
         throw new ClientError({
-            explanation: 'Invaid data sent from the client',
+            explanation: 'Invalid data sent from the client',
             message: 'No registered user found with this email',
             statusCode: StatusCodes.NOT_FOUND
            })

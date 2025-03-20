@@ -3,11 +3,11 @@ import mongoose  from "mongoose";
 
 const messageSchema = new mongoose.Schema({
     body: {
-        type: string,
+        type: String,
         required: [true, 'Message body is required']
     },
     image: {
-        type: string
+        type: String
     },
     channelId: {
         types: mongoose.Schema.Types.ObjectId,

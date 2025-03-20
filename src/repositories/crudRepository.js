@@ -1,6 +1,6 @@
 export default function crudRepository(model){
     return {
-    signup:async function(data){
+    create: async function(data){
     const newDoc = await model.create(data);
        return newDoc;
         },
@@ -21,6 +21,13 @@ export default function crudRepository(model){
             const updatedDoc=await model.findByIdAndUpdate(id,data,{new:true});
             return updatedDoc;
         },
-        
+        deleteMany: async function (modelIds){
+                const response = await model.deleteMany({
+                    _id: {
+                    $in: modelIds
+                    }
+                });
+                return response;
+         }   
     }
 }

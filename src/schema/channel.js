@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const channelSchema = new mongoose.Schema(
     {
     name: {
-        type: string,
+        type: String,
         required: [true, 'Channel name is required'],
     }
 },

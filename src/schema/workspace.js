@@ -11,12 +11,12 @@ const workspaceSchema = new mongoose.Schema({
     },
     members: [
     {
-      membersId: {
+      memberId: {
 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
       },
-      role:  {
+    role:  {
         type: String,
         enum: ['admin', 'member'],
         default: 'member'
@@ -33,8 +33,8 @@ const workspaceSchema = new mongoose.Schema({
     ref: 'Channel'
   }
 ]
-})
+});
 
-const Workpsace = mongoose.model('Workspace', workspaceSchema)
+const Workspace = mongoose.model('Workspace', workspaceSchema)
 
-export default Workpsace;
+export default Workspace;
