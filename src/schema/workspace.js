@@ -23,7 +23,7 @@ const workspaceSchema = new mongoose.Schema({
       }
     }
   ],
-  joincode: {
+  joinCode: {
     type: String,
     required: [true, 'join code is required']
   },
