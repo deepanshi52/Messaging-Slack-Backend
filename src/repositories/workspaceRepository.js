@@ -8,6 +8,13 @@ import crudRepository from "./crudRepository.js";
 
 const workspaceRepository = {
     ...crudRepository(Workspace),
+    getWorkspacedetailsById: async function (workpsaceId) {
+        const workspace = await Workspace.findById(workpsaceId)
+        .populate('members.memberId', 'username email avatar')
+        .populate('channels');
+    return workspace;
+    },
+
     getWorkspaceByName: async function (workspaceName){
         const workspace = await Workspace.findOne({
             name: workspaceName
@@ -85,7 +92,8 @@ const workspaceRepository = {
           });
     } 
 
-    const isChannelAlreadyPartOfWorkspace = workspace.channels.find(
+
+const isChannelAlreadyPartOfWorkspace = workspace.channels.find(
         (channel) => channel.name == channelName
     );
 

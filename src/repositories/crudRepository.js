@@ -29,5 +29,5 @@ export default function crudRepository(model){
                 });
                 return response;
          }   
-    }
+    };
 }
