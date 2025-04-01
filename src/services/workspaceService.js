@@ -266,7 +266,6 @@ export const addMemberToWorkspaceService  = async (workspaceId, memberId, role,u
 }
 
 
-
 export const addChannelToWorkspaceService = async (workpsaceId, channelName, userId) => {
     try {
         const workspace = await workspaceRepository.getWorkspacedetailsById(workpsaceId)

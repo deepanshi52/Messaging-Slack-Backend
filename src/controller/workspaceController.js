@@ -13,7 +13,7 @@ import { customErrorResponse,
 
 export const createWorkspaceController = async (req, res) => {
     try {
-     const response = await createWorkspaceService({
+     const response = await createWorkspaceService({      
         ...req.body,
         owner: req.user
      });

@@ -52,6 +52,7 @@ export const signInService = async(data) => {
         username: user.username,
         avatar: user.avatar,
         email: user.email,
+        _id:  user._id,
         token: createJWT({id: user._id, email: user.email})
     }
    
@@ -60,4 +61,5 @@ export const signInService = async(data) => {
         console.log('User service error', error);
         throw error;
      }
-}
+}    
+// 67ec28f2b2c8928e771456b6

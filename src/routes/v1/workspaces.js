@@ -8,8 +8,9 @@ import { addChannelToWorkspaceController, addMemberToWorkspaceController, create
     updateWorkspaceController
  } from "../../controller/workspaceController.js";
 import { isAuthenticated } from '../../middlewares/authMiddleware.js';
-import { createworkspaceSchema } from "../../validators/workspaceSchema.js";
+import { addChannelToWorkspaceSchema, addMemberToWorkspaceSchema, createworkspaceSchema } from "../../validators/workspaceSchema.js";
 import { validate } from "../../validators/zodValidator.js";
+import ValidationError from "../../utils/errors/validationError.js";
 
 const router = express.Router();
 
@@ -28,8 +29,14 @@ router.get('/join/:joinCode', isAuthenticated, getWorkspaceByJoinCodeController)
 
 router.put('/:workspaceId', isAuthenticated, updateWorkspaceController);
 
-router.put('/:workspaceId/members', isAuthenticated, addMemberToWorkspaceController);
+router.put('/:workspaceId/members',
+     isAuthenticated,
+     validate(addMemberToWorkspaceSchema),
+      addMemberToWorkspaceController);
 
-router.put('/:workspaceId/channels', isAuthenticated, addChannelToWorkspaceController);
+router.put('/:workspaceId/channels', 
+    isAuthenticated,
+     validate(addChannelToWorkspaceSchema)
+    , addChannelToWorkspaceController);
 
 export default router;

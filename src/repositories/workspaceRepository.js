@@ -108,7 +108,7 @@ const isChannelAlreadyPartOfWorkspace = workspace.channels.find(
             statusCode: StatusCodes.FORBIDDEN
         })
     }  
-    const channel = await channelRepository.create({name: channelName});
+    const channel = await channelRepository.create({name: channelName, workspaceId: workspaceId});
 
     workspace.channels.push(channel);
     await workspace.save();
