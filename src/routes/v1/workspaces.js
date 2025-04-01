@@ -1,10 +1,11 @@
 import express from "express";
 
-import { createWorkspaceController, 
+import { addChannelToWorkspaceController, addMemberToWorkspaceController, createWorkspaceController, 
     deleteWorkspaceController, 
     getWorkspaceByJoinCodeController, 
     getWorkspaceController, 
-    getWorkspacesUserIsMemberOfController
+    getWorkspacesUserIsMemberOfController,
+    updateWorkspaceController
  } from "../../controller/workspaceController.js";
 import { isAuthenticated } from '../../middlewares/authMiddleware.js';
 import { createworkspaceSchema } from "../../validators/workspaceSchema.js";
@@ -24,5 +25,11 @@ router.delete('/:workspaceId', isAuthenticated, deleteWorkspaceController);
 router.get('/:workspaceId', isAuthenticated, getWorkspaceController);
 
 router.get('/join/:joinCode', isAuthenticated, getWorkspaceByJoinCodeController);
+
+router.put('/:workspaceId', isAuthenticated, updateWorkspaceController);
+
+router.put('/:workspaceId/members', isAuthenticated, addMemberToWorkspaceController);
+
+router.put('/:workspaceId/channels', isAuthenticated, addChannelToWorkspaceController);
 
 export default router;

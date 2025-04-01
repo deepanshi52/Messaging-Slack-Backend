@@ -15,7 +15,8 @@ const workspaceRepository = {
     return workspace;
     },
 
-    getWorkspaceByName: async function (workspaceName){
+
+ getWorkspaceByName: async function (workspaceName){
         const workspace = await Workspace.findOne({
             name: workspaceName
         });
@@ -29,7 +30,9 @@ const workspaceRepository = {
     return workspace;
     },
 
-    getWorkspaceByJoinCode: async function(joinCode){
+
+
+getWorkspaceByJoinCode: async function(joinCode){
         const workspace = await Workspace.findOne({
            joinCode
         });
@@ -54,30 +57,31 @@ const workspaceRepository = {
             });
         }   
 
-    const isValidUser = await User.findById(memberId);
-    if(!isValidUser){
-        throw new ClientError({
-            explanation: 'Invalid data sent from the client',
-            message: 'Workspace not found',
-            statusCode: StatusCodes.NOT_FOUND
-        });
-    }   
-    const isMemberAlreadyPartOfWorkspace = workspace.members.find(
-        (member) => member.memberId == memberId
-    );
-    if(isMemberAlreadyPartOfWorkspace){
-        throw new ClientError({
-            explanation: 'Invalid data sent from the client',
-            message: 'User already part of workspace',
-            statusCode: StatusCodes.FORBIDDEN
-        });
-    }
+        const isValidUser = await User.findById(memberId);
+        if(!isValidUser){
+            throw new ClientError({
+                explanation: 'Invalid data sent from the client',
+                message: 'User not found',
+                statusCode: StatusCodes.NOT_FOUND
+            });
+        }   
+        const isMemberAlreadyPartOfWorkspace = workspace.members.find(
+            (member) => member.memberId == memberId
+        );
+        if(isMemberAlreadyPartOfWorkspace){
+            throw new ClientError({
+                explanation: 'Invalid data sent from the client',
+                message: 'User already part of workspace',
+                statusCode: StatusCodes.FORBIDDEN
+            });
+        }
    
-    workspace.members.push({
-        memberId:  
-        role
-    })
-  await workspace.save();
+        workspace.members.push({
+            memberId: memberId,
+            role: role
+        });
+        await workspace.save();
+        return workspace;
     },
 
 
