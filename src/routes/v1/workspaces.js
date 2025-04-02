@@ -10,7 +10,6 @@ import { addChannelToWorkspaceController, addMemberToWorkspaceController, create
 import { isAuthenticated } from '../../middlewares/authMiddleware.js';
 import { addChannelToWorkspaceSchema, addMemberToWorkspaceSchema, createworkspaceSchema } from "../../validators/workspaceSchema.js";
 import { validate } from "../../validators/zodValidator.js";
-import ValidationError from "../../utils/errors/validationError.js";
 
 const router = express.Router();
 

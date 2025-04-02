@@ -22,7 +22,9 @@ const isUserAdminOfWorkspace = (workspace, userId) => {
     return response;
   };
 
-  export const isUserMemberOfWorkspace = (workspace, userId) => {
+
+
+export const isUserMemberOfWorkspace = (workspace, userId) => {
 
     console.log("checking member for user",userId);
     console.log('Workspace',workspace)

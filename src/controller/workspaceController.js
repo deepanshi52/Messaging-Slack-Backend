@@ -24,7 +24,7 @@ export const createWorkspaceController = async (req, res) => {
     console.log(error);
    if(error.statusCode){
    return res.status(error.statusCode).json(customErrorResponse(error));
-      }
+ }
   return res
    .status(StatusCodes.INTERNAL_SERVER_ERROR)
    .json(internalErrorResponse(error));    
