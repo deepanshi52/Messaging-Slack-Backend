@@ -32,8 +32,8 @@ export const signIn = async(req,res) => {
       .json(successResponse(response, 'User signed in successfully'));
     } catch (error) {
         console.log('User controller error');
-    if(error.StatusCode){
-     return res.status(error.StatusCode).json(customErrorResponse(error));
+    if(error.statusCode){
+     return res.status(error.statusCode).json(customErrorResponse(error));
         }
         return res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
