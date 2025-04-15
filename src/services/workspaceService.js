@@ -292,7 +292,7 @@ export const addChannelToWorkspaceService = async (workpsaceId, channelName, use
     const isAdmin = isUserAdminOfWorkspace(workspace, userId);
     if(!isAdmin){
         throw new ClientError({
-            explanation: 'User is not a member of the workspace',
+        explanation: 'User is not a member of the workspace',
         message: 'User is not a member of the workspace',
         statusCode: StatusCodes.UNAUTHORIZED
          });   
