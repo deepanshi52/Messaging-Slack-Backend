@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { getMessages } from '../../controller/messageController.js';
 import { isAuthenticated } from '../../middlewares/authMiddleware.js';
 

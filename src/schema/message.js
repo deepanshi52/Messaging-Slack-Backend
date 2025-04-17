@@ -10,16 +10,16 @@ const messageSchema = new mongoose.Schema({
         type: String
     },
     channelId: {
-        types: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Channel',
         required: [true, 'Channel ID is required']
     },
     senderId: {
-        types: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, 'Sender ID is required']
     },
-    workpsaceId: {
+    workspaceId: {
          type: mongoose.Schema.Types.ObjectId,
          ref: 'Workspace',
          required: [true,'Workspace ID is required']
