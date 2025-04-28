@@ -9,9 +9,8 @@ const messageRepository = {
        .skip((page-1) * limit)
        .limit(limit)
        .populate('senderId', 'username email avatar');
-
      
-    return messages
+    return messages;
   }
 };
 export default messageRepository;
